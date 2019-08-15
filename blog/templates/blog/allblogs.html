@@ -50,7 +50,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">LinkedIn</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="#">Blog</a>
                     </li>
                 </ul>
@@ -59,37 +59,28 @@
     </header>
 
     <main role="main">
+        <div class="container">
+            <h1 class="text-center pt-3">Welcome to Oguz's Blog</h1>
+            <br />
+            <br />
+            <h2>Latest Posts</h2>
+            <hr />
 
-        <section class="jumbotron text-center">
-            <div class="container">
-                <h1 class="jumbotron-heading">Hi, I'm Oğuz Kazkayası</h1>
-                <p class="lead text-muted">Something something learning Django. Something something learning Django. Something something learning Django. Bootstrap is cool. Writing a lot of stuff so it looks OK.</p>
-                <p>
-                    <a href="mailto:okazkayasi@outlook.com" class="btn btn-primary my-2">Email Me</a>
-                </p>
-            </div>
-        </section>
+            {% for blog in blogs.all %}
 
-        <div class="album py-5 bg-light">
-            <div class="container">
+                <br>
+                <a href=""><h3>{{ blog.title }}</h3></a>
+                <p>{{ blog.pub_date }}</p>
+                <br>
+                <img class="img-fluid" src="{{ blog.image.url }}" alt="there is a car"/ height=200 width=200>
+                <br>
+                <p>{{ blog.body }}</p>
 
-                <div class="row">
+            {% endfor %}
 
-                    {% for job in jobs.all %}
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="{{ job.image.url }}" alt="there is a car"/>
-                            <div class="card-body">
-                                <p class="card-text">{{ job.summary }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
 
-                </div>
-            </div>
+
         </div>
-
     </main>
 
     <footer class="text-muted">
